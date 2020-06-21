@@ -74,7 +74,7 @@ try {
     print $e->getMessage();
     $response = $e->getResponse();
 }
-  
+
 print $response->getBody();
 ```
 
@@ -128,12 +128,12 @@ services:
         arguments:
          - '@hmac.keyloader'
         public: false
-        
+
     hmac.response.signer:
         class: Acquia\Hmac\Symfony\HmacResponseListener
         tags:
           - { name: kernel.event_listener, event: kernel.response, method: onKernelResponse }
-          
+
     hmac.entry-point:
         class: Acquia\Hmac\Symfony\HmacAuthenticationEntryPoint
 
@@ -187,7 +187,7 @@ PHPUnit testing a controller using HMAC HTTP authentication in Symfony:
 
 services:
     test.client.hmac:
-        class: Acquia\Hmac\Test\Mocks\Symfony\HmacClientlient
+        class: Acquia\Hmac\Test\Mocks\Symfony\HmacClient
         arguments: ['@kernel', '%test.client.parameters%', '@test.client.history', '@test.client.cookiejar']
 
 ```
@@ -238,7 +238,7 @@ make install
 # Run test suite
 make test
 ```
- 
+
 All code should adhere to the following standards:
 
 * [PSR-1](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md)
